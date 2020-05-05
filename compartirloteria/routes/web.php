@@ -31,5 +31,8 @@ Route::get('/boleto','GrupoController@addBoleto')->middleware('auth');
 Route::post('/boleto','GrupoController@postCreateBoleto');
 
 
+Route::get('/imprimir','GrupoController@generatePDF')->name('imprimir')->middleware('auth');
+
+
 Auth::routes();
 Route::get('/','HomeController@getIndex');

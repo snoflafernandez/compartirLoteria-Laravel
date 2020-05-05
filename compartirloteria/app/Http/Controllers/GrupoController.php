@@ -44,11 +44,6 @@ class GrupoController extends Controller
     public function postCreateUser(request $request)
     {
     	$user = new User($request->all());
-    	/*$user->dni=$request->input('dni');
-    	$user->nombre=$request->input('nombre');
-    	$user->apellidos=$request->input('apellidos');
-    	$user->email=$request->input('email');
-    	$user->fecha_nacimiento=$request->input('fecha_nacimiento');*/
         $user->save();
         $select = User::orderBy('idusers','DESC')->first();
 
@@ -63,18 +58,19 @@ class GrupoController extends Controller
     public function postCreateBoleto(request $request)
     {
         $boleto = new Boleto($request->all());
-        /*$boleto->numero=$request->input('numero');
-        $boleto->numero_sorteo=$request->input('numero_sorteo');
-        $boleto->serie=$request->input('serie');
-        $boleto->fraccion=$request->input('fraccion');
-        $boleto->precio=$request->input('precio');
-        $boleto->fecha_sorteo=$request->input('fecha_sorteo');
-        $boleto->participacion_user=$request->input('participacion_user');
-        $boleto->foto_delante=$request->input('foto_delante');
-        $boleto->foto_detras=$request->input('foto_detras');
-        $boleto->groups_idgroups=$request->input('groups_idgroups');*/
         $boleto->save();
         return redirect('/grupo/{id}');
+    }
+
+    public function generatePDF()
+    {
+        $data = User::whereIn('idusers',function($query){
+            $query -> select('users_idusers')
+                    ->from('groups_has_users')
+                    ->where('groups_idgroups','=',auth()->user()->idgroups);
+        })->get();
+        $pdf = \PDF::loadView('pdf',compact('data'));        
+        return $pdf->stream('prueba.pdf');
     }
 
 }

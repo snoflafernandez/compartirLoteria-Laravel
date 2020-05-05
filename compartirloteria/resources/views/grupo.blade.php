@@ -18,7 +18,6 @@
 		  </div>
 		</div>
 	</div>
-
 	@else
 	<div class="col mt-3">
 		<div class="card" style="width: 18rem;">
@@ -38,11 +37,10 @@
 	</div>
 	@else
 	<div class="col mt-3">
-		<a href="#" role="button"><button type="button" class="btn btn-danger">Generar PDF</button></a>
+		<a href="{{route('imprimir')}}" role="button"><button type="button" class="btn btn-danger">Generar PDF</button></a>
 	</div>
 	@endif
 </div>
-	
 
 <div class="row">
 	<div class="col-12 mt-4">
@@ -50,6 +48,7 @@
 	</div>
 	<div class="col">
 		@foreach( $arrayBoletos as $key => $boleto)
+		
 		<div class="card" style="width: 18rem;">
 		  <div class="card-body">
 		    <h5 class="card-title">Info del boleto</h5>
@@ -62,13 +61,16 @@
 		    <p class="card-text">{{$boleto->participacion_user}}</p>
 		  </div>
 		</div>
+		
 		@endforeach
+		@if( $arrayBoletos->count() < 1)
+		<div class="col mt-3">
+			<a href="{{url('/boleto')}}" role="button"><button type="button" class="btn btn-primary">Añadir boleto</button></a>
+		</div>
+		@else
+		@endif
 	</div>
-	@if( $boleto->count() < 1)
-	<div class="col mt-3">
-		<a href="{{url('/boleto')}}" role="button"><button type="button" class="btn btn-primary">Añadir boleto</button></a>
-	</div>
-	@else
-	@endif
+	
+	
 </div>
 @endsection
