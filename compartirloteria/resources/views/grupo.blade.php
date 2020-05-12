@@ -37,7 +37,7 @@
 	</div>
 	@else
 	<div class="col mt-3">
-		<a href="{{route('imprimir')}}" role="button"><button type="button" class="btn btn-danger">Generar PDF</button></a>
+		<a href="{{route('muestra')}}" role="button"><button type="button" class="btn btn-danger">Generar PDF</button></a>
 	</div>
 	@endif
 </div>

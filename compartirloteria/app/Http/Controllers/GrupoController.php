@@ -69,8 +69,17 @@ class GrupoController extends Controller
                     ->from('groups_has_users')
                     ->where('groups_idgroups','=',auth()->user()->idgroups);
         })->get();
-        $pdf = \PDF::loadView('pdf',compact('data'));        
-        return $pdf->stream('prueba.pdf');
+        $pdf = \PDF::loadView('pdf',compact('data'));
+        $nombre = auth()->user()->nombre;
+        $pdf->save(storage_path()."contrato-".$nombre.".pdf");
+        return $pdf->stream(storage_path()."contrato-".$nombre.".pdf");
+
+        /*$ruta = "/archivos";
+        $nombre = auth()->user()->nombre;
+        $archivo = "contrato-".$nombre.".pdf";
+        $dompdf->render();
+        $output = $dompdf->output();
+        file_put_contents($ruta.$archivo, $output);*/
     }
 
 }

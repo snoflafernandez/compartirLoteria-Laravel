@@ -13,7 +13,7 @@
 	<table style="border-collapse: separate; border-spacing: 15px;">
 		<tr>
 		@foreach( $data as $key)
-			<td>
+			<td style="width: 100px;">
 				<h6>{{$key->nombre}} {{$key->apellidos}}</h6>
 				<p>{{$key->DNI}}</p>
 				<p>{{$key->fecha_nacimiento}}</p>
@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 		@foreach( $data as $key)
-			<td style="border:1px solid black; height: 100px;">
+			<td style="border:1px solid black; height: 100px; width: 100px;">
 				&nbsp;&nbsp;&nbsp;
 			</td>
 		@endforeach

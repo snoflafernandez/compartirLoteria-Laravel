@@ -33,6 +33,10 @@ Route::post('/boleto','GrupoController@postCreateBoleto');
 
 Route::get('/imprimir','GrupoController@generatePDF')->name('imprimir')->middleware('auth');
 
+Route::get('/muestra',function(){
+	return view('muestra');
+})->name('muestra');
+
 
 Auth::routes();
 Route::get('/','HomeController@getIndex');
