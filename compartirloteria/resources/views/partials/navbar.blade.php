@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="/" style="color:#777"><span style="font-size:15pt">&#127808;</span> CompartirLoteria.com</a>
+        <a class="navbar-brand" href="/" style="color:#777"><span>&#127808;</span> CompartirLoteria.com</a>
 
         @if( Auth::check() )
             <a class="nav-link" href="{{url('/grupo/{$id}')}}">

@@ -7,7 +7,7 @@
         </div>
         <div class="modal-body">
 
-        	<form class="form-horizontal" method="POST" action="#">
+        	<form class="form-horizontal" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('numero') ? ' has-error' : '' }}">

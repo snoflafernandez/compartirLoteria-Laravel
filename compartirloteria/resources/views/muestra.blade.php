@@ -6,12 +6,10 @@
 </div>
 
 <object>
-	<embed src="{{route('imprimir')}}" width="100%" height="800" allowfullscreen="true" type="application/pdf"></embed>
+	@if (file_exists(public_path('almacenamiento/')."contrato-".auth()->user()->nombre.".pdf"))
+		<embed src="{{ asset('almacenamiento/contrato-'.auth()->user()->nombre.'.pdf') }}" width="100%" height="800" allowfullscreen="true" type="application/pdf"></embed>
+	@else
+		<embed src="{{route('imprimir')}}" width="100%" height="800" allowfullscreen="true" type="application/pdf"></embed>
+	@endif
 </object>
-
-<!--<iframe src="{{route('imprimir')}}" width="100%" height="800" allowfullscreen="true" type="application/pdf">
-	
-</iframe>-->
-
-
 @endsection
